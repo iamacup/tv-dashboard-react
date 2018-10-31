@@ -21,7 +21,7 @@ import Targets from './components/graphs/targets';
 import Bouncers from './components/bouncers';
 import Box from './components/box';
 
-import exampleData from './example.json';
+//import exampleData from './example.json';
 
 //update frequency in minutes
 const updateFrequency = 20;
