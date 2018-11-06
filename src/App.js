@@ -63,8 +63,6 @@ class App extends Component {
     $(document).keypress((e) => {
         const keyNum = e.which - 48;
 
-
-
         if(keyNum === 1) {
           this.setState({screenNumber: keyNum, error: null, data:null}, () => {
             this.doUpdate(true);
