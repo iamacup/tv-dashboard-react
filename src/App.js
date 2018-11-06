@@ -69,7 +69,7 @@ class App extends Component {
           });
 
         } else if(keyNum === 2 || keyNum === 3 || keyNum === 4 || keyNum === 5) {
-          this.setState({screenNumber: keyNum, error: null, data: ''});
+          this.setState({screenNumber: keyNum, error: null, data: '', playSound: false});
         } else if(keyNum === 67) {
           this.setState({playSound: true, soundKey: Math.random()});
         }

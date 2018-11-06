@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/dan-pisstake.65819227.jpg"
   },
   {
-    "revision": "34b724789b6ef2ee3c66",
+    "revision": "82c5cfe799c386aeed30",
     "url": "/static/css/main.53638299.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/static/media/back.46b4c7ce.jpg"
   },
   {
-    "revision": "34b724789b6ef2ee3c66",
-    "url": "/static/js/main.34b72478.chunk.js"
+    "revision": "82c5cfe799c386aeed30",
+    "url": "/static/js/main.82c5cfe7.chunk.js"
   },
   {
     "revision": "c5f16447cf0e5cdb060d2686164709a3",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.a519ce01.chunk.css"
   },
   {
-    "revision": "1a56539fcc21f4dcc36538e1e767ac4c",
+    "revision": "7cc5e22caa9c3c92881b832e80ab7ab5",
     "url": "/index.html"
   }
 ];
