@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import Sound from 'react-sound';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,7 +22,7 @@ import Targets from './components/graphs/targets';
 import Bouncers from './components/bouncers';
 import Box from './components/box';
 
-//import exampleData from './example.json';
+import exampleData from './example.json';
 
 //update frequency in minutes
 const updateFrequency = 20;
@@ -62,6 +63,8 @@ class App extends Component {
     $(document).keypress((e) => {
         const keyNum = e.which - 48;
 
+
+
         if(keyNum === 1) {
           this.setState({screenNumber: keyNum, error: null, data:null}, () => {
             this.doUpdate(true);
@@ -69,6 +72,8 @@ class App extends Component {
 
         } else if(keyNum === 2 || keyNum === 3 || keyNum === 4 || keyNum === 5) {
           this.setState({screenNumber: keyNum, error: null, data: ''});
+        } else if(keyNum === 67) {
+          this.setState({playSound: true, soundKey: Math.random()});
         }
     });
 
@@ -84,7 +89,7 @@ class App extends Component {
         //uncomment this for 'blink less' update on the dashboard
         this.setState({data: null});   
 
-        const res = await axios.get(`http://localhost:8080/update`);
+        /*const res = await axios.get(`http://localhost:8080/update`);
 
         if(res.data.generalStatus === 'success') {
           this.setState({data: res.data, updateTime});
@@ -92,10 +97,10 @@ class App extends Component {
           throw new Error(res.data.payload);
         }
 
-        this.doUpdate();
+        this.doUpdate();*/
 
         //this uses the test stuff
-        //this.setState({data: exampleData, updateTime});
+        this.setState({data: exampleData, updateTime});
 
       } catch (error) {
         this.doUpdate();
@@ -139,6 +144,18 @@ class App extends Component {
           </div>
         ); 
     } 
+
+    let soundItem = null;
+
+    if(this.state.playSound === true) {
+      soundItem = (
+          <Sound
+            key={this.state.soundKey}
+            url="http://static1.squarespace.com/static/5a254f97cd39c30b5ba88697/t/5be19d616d2a739c3fdc5178/1541512546580/sound.mp3/original/sound.mp3"
+            playStatus={Sound.status.PLAYING}
+          />
+        );
+    }
 
     //we know data is not null here
     const {payload} = data;
@@ -280,12 +297,16 @@ class App extends Component {
 
             </div>
 
+            {soundItem}
           </div>
         );
     } else if(screenNumber === 2) {
       this.starsBG();
       return (
-          <Bouncers />
+          <div>
+            <Bouncers />
+            {soundItem}
+          </div>
         ); 
     } else if (screenNumber === 3) {
       this.starsBG();
@@ -295,14 +316,15 @@ class App extends Component {
             <div className="text-center">
               <span className="splash-large">JUST A FANS ANALYSIS</span>
             </div>
+            {soundItem}
           </div>
         );
     } else if(screenNumber === 4) {
       this.danBG();
-      return <div/>;
+      return <div>{soundItem}</div>;
     } else if(screenNumber === 5) {
       this.allBG();
-      return <div/>;
+      return <div>{soundItem}</div>;
     }
   }
 }
