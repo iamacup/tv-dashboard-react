@@ -22,7 +22,7 @@ import Targets from './components/graphs/targets';
 import Bouncers from './components/bouncers';
 import Box from './components/box';
 
-import exampleData from './example.json';
+//import exampleData from './example.json';
 
 //update frequency in minutes
 const updateFrequency = 20;
@@ -87,7 +87,7 @@ class App extends Component {
         //uncomment this for 'blink less' update on the dashboard
         this.setState({data: null});   
 
-        /*const res = await axios.get(`http://localhost:8080/update`);
+        const res = await axios.get(`http://localhost:8080/update`);
 
         if(res.data.generalStatus === 'success') {
           this.setState({data: res.data, updateTime});
@@ -95,10 +95,10 @@ class App extends Component {
           throw new Error(res.data.payload);
         }
 
-        this.doUpdate();*/
+        this.doUpdate();
 
         //this uses the test stuff
-        this.setState({data: exampleData, updateTime});
+        //this.setState({data: exampleData, updateTime});
 
       } catch (error) {
         this.doUpdate();
