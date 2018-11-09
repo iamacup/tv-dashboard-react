@@ -23,7 +23,7 @@ import Targets from './components/graphs/targets';
 import Bouncers from './components/bouncers';
 import Box from './components/box';
 
-import exampleData from './example.json';
+//import exampleData from './example.json';
 
 const adjustData = [
   {date: '2018-10-01', count: 11},
@@ -121,7 +121,7 @@ class App extends Component {
         let updateTime = `${now.getHours()}:${now.getMinutes()} ${now.getDate()}/${now.getMonth()+1}`;
 
         //uncomment this for 'blink less' update on the dashboard
-        /*this.setState({data: null});   
+        this.setState({data: null});   
 
         const res = await axios.get(`http://localhost:8080/update`);
 
@@ -131,10 +131,10 @@ class App extends Component {
           throw new Error(res.data.payload);
         }
 
-        this.doUpdate();*/
+        this.doUpdate();
 
         //this uses the test stuff
-        this.setState({data: exampleData, updateTime});
+        //this.setState({data: exampleData, updateTime});
 
       } catch (error) {
         this.doUpdate();
