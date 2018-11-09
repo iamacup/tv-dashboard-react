@@ -38,7 +38,6 @@ class DRU extends Component {
   render() {
 
     const {data} = this.props;
-    console.log(data);
 
     const mauWeeklyCurrent = data.mauWeekly.series[0][data.mauWeekly.series[0].length-1].value;
     const mauWeeklyTarget = Math.floor(data.mauWeekly.series[0][data.mauWeekly.series[0].length-2].value * 1.3, 10);

@@ -24,8 +24,6 @@ class DRU extends Component {
   render() {
     const {series} = this.props.data;
 
-    console.log(series);
-
     const downloadsNum = series[1][1].value;
     const signupNum = series[0][1].value;
 

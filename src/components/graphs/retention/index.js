@@ -22,6 +22,8 @@ class DRU extends Component {
     setTimeout(() => {
       const {combined} = this.props.data.series[0];
 
+      console.log(this.props.data);
+
       if(combined.length !== 32) {
         error('DRU Graph Error', 'Did not get 32 elements in the DRU graph data from Amplitude');
       }
@@ -109,6 +111,11 @@ class DRU extends Component {
             }
         },
         series: [{
+          regression: true ,
+                regressionSettings: {
+                    type: 'linear',
+                    color:  'rgba(223, 83, 83, .9)'
+                },
             name: `Target (${targetPercentage}%)`,
             fillOpacity: 1,
             data: Array(30).fill(targetPercentage)

@@ -14,6 +14,7 @@ import allBGImage from './images/normal-screen.jpg';
 import Retention from './components/graphs/retention';
 import Today from './components/graphs/today';
 import DRU from './components/graphs/DRU';
+import Downloads from './components/graphs/downloads';
 import Month from './components/graphs/month';
 import Tagging from './components/graphs/tagging';
 import Twitter from './components/graphs/twitter';
@@ -22,7 +23,42 @@ import Targets from './components/graphs/targets';
 import Bouncers from './components/bouncers';
 import Box from './components/box';
 
-//import exampleData from './example.json';
+import exampleData from './example.json';
+
+const adjustData = [
+  {date: '2018-10-01', count: 11},
+  {date: '2018-10-02', count: 18},
+  {date: '2018-10-03', count: 11},
+  {date: '2018-10-04', count: 14},
+  {date: '2018-10-05', count: 7},
+  {date: '2018-10-06', count: 8},
+  {date: '2018-10-07', count: 13},
+  {date: '2018-10-08', count: 6},
+  {date: '2018-10-09', count: 10},
+  {date: '2018-10-10', count: 16},
+  {date: '2018-10-11', count: 12},
+  {date: '2018-10-12', count: 10},
+  {date: '2018-10-13', count: 10},
+  {date: '2018-10-14', count: 8},
+  {date: '2018-10-15', count: 24},
+  {date: '2018-10-16', count: 29},
+  {date: '2018-10-17', count: 34},
+  {date: '2018-10-18', count: 31},
+  {date: '2018-10-19', count: 58},
+  {date: '2018-10-20', count: 65},
+  {date: '2018-10-21', count: 66},
+  {date: '2018-10-22', count: 78},
+  {date: '2018-10-23', count: 86},
+  {date: '2018-10-24', count: 65},
+  {date: '2018-10-25', count: 41},
+  {date: '2018-10-26', count: 64},
+  {date: '2018-10-27', count: 70},
+  {date: '2018-10-28', count: 121},
+  {date: '2018-10-29', count: 64},
+  {date: '2018-10-30', count: 65},
+  {date: '2018-10-31', count: 97},
+  {date: '2018-11-01', count: 127},
+];
 
 //update frequency in minutes
 const updateFrequency = 20;
@@ -85,7 +121,7 @@ class App extends Component {
         let updateTime = `${now.getHours()}:${now.getMinutes()} ${now.getDate()}/${now.getMonth()+1}`;
 
         //uncomment this for 'blink less' update on the dashboard
-        this.setState({data: null});   
+        /*this.setState({data: null});   
 
         const res = await axios.get(`http://localhost:8080/update`);
 
@@ -95,10 +131,10 @@ class App extends Component {
           throw new Error(res.data.payload);
         }
 
-        this.doUpdate();
+        this.doUpdate();*/
 
         //this uses the test stuff
-        //this.setState({data: exampleData, updateTime});
+        this.setState({data: exampleData, updateTime});
 
       } catch (error) {
         this.doUpdate();
@@ -148,6 +184,7 @@ class App extends Component {
     if(this.state.playSound === true) {
       soundItem = (
           <Sound
+            onFinishedPlaying={() => { this.setState({playSound: false}); }}
             key={this.state.soundKey}
             url="http://static1.squarespace.com/static/5a254f97cd39c30b5ba88697/t/5be19d616d2a739c3fdc5178/1541512546580/sound.mp3/original/sound.mp3"
             playStatus={Sound.status.PLAYING}
@@ -174,8 +211,12 @@ class App extends Component {
 
         const retentionBox = (
             <div style={{height: '100%'}}>
-              <Retention
+              {/*<Retention
                 data={payload.retention}
+              />*/}
+              <Downloads
+                data={payload.druDaily}
+                adjustData={adjustData}
               />
             </div>
           );
@@ -184,6 +225,7 @@ class App extends Component {
             <div style={{height: '100%'}}>
               <DRU
                 data={payload.druDaily}
+                adjustData={adjustData}
               />
             </div>
           );

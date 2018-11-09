@@ -31,7 +31,7 @@ class DRU extends Component {
     }
 
     for(let a=0; a<data.series[0].length; a++) {
-      series.push(data.series[0][a].value - firstOpenSeries[a]);
+      series.push(firstOpenSeries[a]);
     }
 
     return series;
@@ -163,7 +163,7 @@ class DRU extends Component {
   render() {
     const obj = (
         <div style={{height: '100%'}}>
-          <div style={{position: 'absolute', top: '6%', left: '15%'}}><span className="box-title">DAILY RETURNING USERS</span></div>
+          <div style={{position: 'absolute', top: '6%', left: '15%'}}><span className="box-title">DOWNLOADS</span></div>
 
           <div style={{height: '100%'}} ref={(element) => {this.target = element;}}>
 
