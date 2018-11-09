@@ -129,10 +129,6 @@ class DRU extends Component {
         },
         plotOptions: {
             line: {
-                dataLabels: {
-                  enabled: true,
-                  style: {"color": "#ffffff", "cursor": "default", "fontSize": "0.6vw"},
-                },
                 pointStart: 1,
                 marker: {
                     enabled: false,
@@ -150,6 +146,10 @@ class DRU extends Component {
             name: `Data`,
             fillOpacity: 1,
             data: series,
+            dataLabels: {
+                  enabled: true,
+                  style: {"color": "#ffffff", "cursor": "default", "fontSize": "0.6vw"},
+                },
         },{
             name: `trend`,
             fillOpacity: 0.5,
